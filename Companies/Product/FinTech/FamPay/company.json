@@ -1,0 +1,18 @@
+{
+  "companyId": "fampay",
+  "companyName": "FamPay",
+  "enabled": true,
+  "priority": "P2",
+  "careersUrl": "https://jobs.lever.co/fampay",
+  "domains": [
+    "famapp.in"
+  ],
+  "ats": {
+    "type": "lever",
+    "boardToken": "fampay"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public lever API on 2026-09-30: 5 engineering openings in India at that time."
+}

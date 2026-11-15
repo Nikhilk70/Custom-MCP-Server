@@ -1,0 +1,18 @@
+{
+  "companyId": "rubrik",
+  "companyName": "Rubrik",
+  "enabled": true,
+  "priority": "P2",
+  "careersUrl": "https://job-boards.greenhouse.io/rubrik",
+  "domains": [
+    "rubrik.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "rubrik"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 10 engineering openings in India at that time."
+}

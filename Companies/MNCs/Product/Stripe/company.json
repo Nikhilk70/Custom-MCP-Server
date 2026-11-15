@@ -1,0 +1,18 @@
+{
+  "companyId": "stripe",
+  "companyName": "Stripe",
+  "enabled": true,
+  "priority": "P2",
+  "careersUrl": "https://job-boards.greenhouse.io/stripe",
+  "domains": [
+    "stripe.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "stripe"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 7 engineering openings in India at that time."
+}

@@ -1,0 +1,18 @@
+{
+  "companyId": "samsara",
+  "companyName": "Samsara",
+  "enabled": true,
+  "priority": "P3",
+  "careersUrl": "https://job-boards.greenhouse.io/samsara",
+  "domains": [
+    "samsara.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "samsara"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 6 engineering openings in India at that time."
+}

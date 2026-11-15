@@ -1,0 +1,18 @@
+{
+  "companyId": "razorpay",
+  "companyName": "Razorpay",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://job-boards.greenhouse.io/razorpaysoftwareprivatelimited",
+  "domains": [
+    "razorpay.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "razorpaysoftwareprivatelimited"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 2 engineering openings in India at that time."
+}

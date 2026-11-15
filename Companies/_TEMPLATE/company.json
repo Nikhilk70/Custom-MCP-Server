@@ -1,0 +1,14 @@
+{
+  "_help": "Copy this folder to Companies/<MNCs|Product|Service|Startups>/<Sub>/<CompanyName>/company.json. Folders starting with _ are ignored. Only companyName is required.",
+  "companyId": "acme",
+  "companyName": "Acme Corp",
+  "category": "Product",
+  "type": "Product",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://boards.greenhouse.io/acme",
+  "domains": ["acme.com"],
+  "ats": { "type": "greenhouse", "boardToken": "acme" },
+  "locations": ["Bengaluru"],
+  "notes": "ats is optional: it is detected from careersUrl for Greenhouse, Lever, Ashby and SmartRecruiters. Any other careersUrl is read via Firecrawl, and only listings verified on the page are kept. For SmartRecruiters add \"country\": \"in\" to ats so large global boards return only India postings."
+}

@@ -1,0 +1,18 @@
+{
+  "companyId": "sarvam",
+  "companyName": "Sarvam AI",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://jobs.ashbyhq.com/sarvam",
+  "domains": [
+    "sarvam.ai"
+  ],
+  "ats": {
+    "type": "ashby",
+    "boardToken": "sarvam"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public ashby API on 2026-09-30: 24 engineering openings in India at that time."
+}

@@ -1,0 +1,49 @@
+<!doctype html><html><head><title>Java Backend Developer - Acme Payments</title><link rel="stylesheet" href="common.css"></head><body>
+<!-- Structure copied from a live jobs.lever.co apply page (2026-09-30): wrapping labels with a ✱ span, a custom
+     question whose text sits in a sibling div, hidden upload status text, an autocomplete that clears typed text
+     on blur, and an invisible hCaptcha (hidden iframe, 0px container). -->
+<h1>Java Backend Developer</h1><p>Acme Payments · Bengaluru, India</p>
+<form action="thanks.html" method="get">
+  <ul>
+    <li class="application-question resume"><label><div class="application-label">Resume/CV <span class="required">✱</span></div>
+      <div class="application-field"><a href="#">Attach resume/CV</a><input id="resume-upload-input" type="file" name="resume" style="display:none">
+        <span class="resume-upload-failure" style="display:none">Couldn't auto-read resume.</span><span class="resume-upload-working" style="display:none">Analyzing resume...</span></div></label></li>
+    <li class="application-question"><label><div class="application-label">Full name<span class="required">✱</span></div><div class="application-field"><input type="text" name="name"></div></label></li>
+    <li class="application-question"><label><div class="application-label">Email<span class="required">✱</span></div><div class="application-field"><input type="email" name="email"></div></label></li>
+    <li class="application-question"><label><div class="application-label">Current location </div><div class="application-field"><input id="location-input" type="text" name="location">
+      <input id="selected-location" type="hidden" name="selectedLocation">
+      <div class="dropdown-results"></div>
+      <div class="dropdown-no-results" style="display:none">No location found. Try entering a different location</div></div></label></li>
+    <li class="application-question custom-question"><div><div class="application-label full-width textarea"><div class="text">What is your expected CTC?*</div></div>
+      <div class="application-field full-width"><textarea class="card-field-input" name="cards[abc][field0]"></textarea></div></div></li>
+    <li class="application-question custom-question"><div><div class="application-label full-width textarea"><div class="text">How many years of experience do you have working with a SaaS firm?*</div></div>
+      <div class="application-field full-width"><textarea class="card-field-input" name="cards[abc][field1]"></textarea></div></div></li>
+    <li class="application-question custom-question"><div><div class="application-label full-width textarea"><div class="text">How many years of experience do you have in Java?*</div></div>
+      <div class="application-field full-width"><textarea class="card-field-input" name="cards[abc][field2]"></textarea></div></div></li>
+  </ul>
+  <div class="h-captcha" data-sitekey="test" style="height:0"><iframe src="about:blank?hcaptcha"style="visibility:hidden;width:1280px;height:720px"></iframe></div>
+  <button type="submit">Submit Application</button>
+</form>
+<script>
+  // Autocomplete like Lever's location box (options copied from the live page): suggestions appear while typing
+  // (keyboard events, not a pasted value), a click keeps the value, and blurring without a pick clears the text.
+  const input = document.getElementById("location-input");
+  const results = document.querySelector(".dropdown-results");
+  const places = ["Bengaluru, Bengaluru Urban, Karnataka, IND", "Bengaluru, Bangalore, Karnataka, IND", "Beṅgalurū, Almel, Vijyāpurā, Karnaatak, IND", "Belagavi, Karnataka, IND"];
+  let picked = false;
+  input.addEventListener("keyup", () => {
+    picked = false;
+    const q = input.value.toLowerCase();
+    results.innerHTML = "";
+    if (q.length < 3) return;
+    for (const p of places.filter((x) => x.toLowerCase().startsWith(q.slice(0, 3)))) {
+      const d = document.createElement("div");
+      d.className = "dropdown-location";
+      d.textContent = p;
+      d.addEventListener("mousedown", (ev) => { ev.preventDefault(); input.value = p; document.getElementById("selected-location").value = p; picked = true; results.innerHTML = ""; });
+      results.appendChild(d);
+    }
+  });
+  input.addEventListener("blur", () => { if (!picked) input.value = ""; results.innerHTML = ""; });
+</script>
+</body></html>

@@ -1,0 +1,474 @@
+AUTO-JOB-AGENT  (web app name: ApplyPilot)
+How the project works, in plain words
+=====================================================================
+
+
+1. WHAT IS THIS PROJECT?
+---------------------------------------------------------------------
+AUTO-JOB-AGENT is a personal job-search assistant that runs on your own
+computer. It is built for the Indian job market (Bengaluru, Pune,
+Hyderabad, Mumbai, remote and so on) and for fresher / 0-2 year roles
+such as Java Full Stack, Backend, Full Stack and Software Engineer.
+
+It does five jobs for you:
+
+  1. FINDS jobs        - searches company career pages and job boards.
+  2. CHECKS jobs       - reads each job description (JD) and decides
+                         whether you are really eligible for it.
+  3. TAILORS resumes   - builds a resume for each good job, using only
+                         true facts from your own data.
+  4. FILLS applications- opens the job's application form in Chrome and
+                         fills it in for you.
+  5. KEEPS records     - saves everything in a Google Sheet so you can
+                         see every job, status and result.
+
+It does not lie, guess or bypass security. When it is unsure, it stops
+and asks you.
+
+
+2. THE BIG PICTURE (how a job moves through the system)
+---------------------------------------------------------------------
+
+   Company career pages / job boards
+                |
+                v
+   [1] DISCOVER   -> collect job posts
+                |
+                v
+   [2] CLEAN UP   -> normalise and remove duplicates
+                |
+                v
+   [3] READ JD    -> fetch the full job description
+                |
+                v
+   [4] MATCH      -> technical score (0-100%)
+                |    + hard eligibility check (PASS / FAIL)
+                |
+         FAIL --+--> NOT_ELIGIBLE (stop, with the exact reason)
+                |
+              PASS
+                v
+   [5] RESUME     -> tailored resume made from your data (LaTeX -> PDF)
+                |
+                v
+   [6] APPLY      -> open the form, fill it, answer questions
+                |
+                v
+   [7] YOU CHECK  -> you review, solve CAPTCHA/OTP yourself, approve
+                |
+                v
+   [8] SUBMIT     -> submitted, then checked: confirmed or not?
+                |
+                v
+   [9] RECORD     -> Google Sheet + reports updated
+
+
+3. STEP BY STEP
+---------------------------------------------------------------------
+
+STEP 1 - Discover jobs
+  * Your company list is in the "Companies/" folder (32 companies:
+    MNCs, product companies, service companies, startups).
+  * For each company the agent uses its job system (Greenhouse, Lever,
+    Ashby, SmartRecruiters, Workday ...) or Firecrawl/LinkedIn where set up.
+  * Every job keeps both its listing link and its real apply link, so
+    the two are never mixed up.
+
+STEP 2 - Clean up
+  * Company names, titles and locations are normalised.
+  * The same job found twice (for example on LinkedIn and on the
+    company site) is marked DUPLICATE and kept only once.
+
+STEP 3 - Read the job description
+  * The full JD is fetched. If no JD can be found, the job is not
+    scored. The agent never invents a JD.
+
+STEP 4 - Match (two separate checks)
+  a) Technical match score (0-100%), from:
+       required skills, preferred skills, job title, experience,
+       location, work mode and education.
+  b) Hard eligibility gate. It checks in this order:
+       role -> experience -> must-have requirements -> minimum score
+  * A high score does NOT make a job eligible. Example:
+       "Technical match 82% but needs 5+ years" -> NOT_ELIGIBLE.
+  * Only skills that are in your own data (MY_DATA) earn points.
+
+STEP 5 - Tailored resume
+  * Starts from your master LaTeX template.
+  * Changes only the allowed sections: it reorders your real skills,
+    projects and bullet points to fit the JD.
+  * It never adds a skill or experience you do not have.
+  * The resume is compiled to PDF and checked before use.
+
+STEP 6 - Apply
+  * Chrome opens with its own saved profile, and the agent finds the
+    application form.
+  * Every field is filled from a trusted source:
+       your profile, your resume, Application_Answers.txt, the
+       question bank, or an answer you typed in during the run.
+  * If a required question has no known answer, the agent STOPS and
+    asks you. It never guesses. You can save your answer for next
+    time ("remember") or use it once only.
+
+STEP 7 - Human checkpoints (always you)
+  * CAPTCHA, OTP, MFA, login, identity checks -> you do them.
+  * Payment request -> hard stop. The agent never pays.
+  * Before submitting, you see a review of every field and approve it.
+
+STEP 8 - Submit and verify
+  * After submitting, the agent looks for proof:
+       VERIFIED   - confirmation message or page found
+       UNVERIFIED - submitted but no confirmation seen
+       REJECTED   - the site showed an error (for example "error
+                    verifying your application")
+  * It never reports "applied" without evidence.
+
+STEP 9 - Record
+  * The Google Sheet gets the job's status, match score, reason,
+    resume version, attempts, errors and timeline.
+
+
+4. JOB STATUSES (state machine)
+---------------------------------------------------------------------
+  DISCOVERED -> NORMALIZED -> JD_FETCHED -> MATCHED / NOT_MATCHED
+  -> READY_FOR_RESUME -> RESUME_GENERATED -> READY_TO_APPLY
+  -> APPLYING -> FORM_DETECTED -> FORM_FILLED -> SUBMITTING
+  -> APPLIED  or  SUBMISSION_UNVERIFIED
+
+  Side states: NEEDS_HUMAN, VALIDATION_FAILED, FAILED, BLOCKED,
+               SKIPPED, DUPLICATE
+
+  Only allowed moves are accepted, and every move is logged with a reason.
+
+
+5. SAFETY RULES (built in, cannot be switched off from the app)
+---------------------------------------------------------------------
+  * Default mode is DRY RUN / REVIEW ONLY: forms are filled but nothing
+    is submitted.
+  * LIVE mode must be turned on by you: type "LIVE" to arm it, then
+    confirm "LIVE" again for each run. There is also a daily limit.
+  * Never bypasses or auto-clicks CAPTCHA, OTP or MFA.
+  * Never types or stores your Google or site passwords.
+  * Never fabricates answers, skills, experience or results.
+  * Never applies to the same job twice (duplicate protection).
+  * Secrets live only in .env and config/google-credentials.json, and
+    both are git-ignored.
+  * STOP ALL, pause and skip buttons are always available.
+
+
+6. THE PARTS OF THE PROJECT (folders)
+---------------------------------------------------------------------
+  agent/          The core logic
+    discovery/      finding jobs
+    normalization/  cleaning up and removing duplicates
+    matching/       JD analysis, skill catalog, scoring, eligibility
+    resume/         resume planning, LaTeX rendering, PDF checks
+    application/    form detection, form filling, the application engine
+    questions/      answer file + question bank
+    rag/            "Ask your data" search over your own records
+    store/          Google Sheets database + state machine
+    validation/     submit gate and submission evidence
+    reporting/      daily reports
+    orchestration/  daily run, scheduler, preflight checks
+    career/         NEW - career intelligence layer (in progress, see 10)
+
+  integrations/   Connectors: Google Sheets, Playwright (Chrome),
+                  Firecrawl, LinkedIn, company job systems, LaTeX,
+                  Overleaf, Gemini AI
+
+  server/         ApplyPilot local web server (127.0.0.1:4317 only)
+  web/            ApplyPilot web app (React)
+  mcp/            MCP server, so AI assistants can use the agent's tools
+  Companies/      your company watchlist
+  Data_Resume/    MY_DATA (your facts), resume template, generated resumes
+  config/         settings (matching, safety, resume, sources ...)
+  tests/          unit, integration and end-to-end tests
+
+
+7. APPLYPILOT - THE WEB APP
+---------------------------------------------------------------------
+Start it with:  npm run app    then open  http://127.0.0.1:4317
+Demo mode with fake jobs:  npm run app:demo
+
+Screens:
+  Overview      - key numbers, application funnel, live agent activity
+  Jobs          - search and filter jobs, with match and eligibility details
+  Agent         - live console and timeline, pause / resume / stop
+  Needs you     - CAPTCHA hand-offs, new questions, review before submit
+  Applications  - each application with evidence and screenshots
+  Questions     - new questions the agent met, with answer suggestions
+  Answer Bank   - edit Application_Answers.txt safely (with backups)
+  Profile       - profile, resumes, LaTeX Template editor with PDF
+                  preview and download, search strategy
+  Settings      - safety, live mode, limits, privacy, light/dark theme
+  Run history   - every run with its summary
+
+Features: live updates, notifications, Ctrl+K command palette, a light
+or dark theme, and phone-friendly layout.
+
+
+8. RAG ("Ask your data")
+---------------------------------------------------------------------
+  * Builds a small search index from YOUR records only: answers,
+    profile, experience, projects, skills and resume text.
+  * Search uses keyword (BM25) + Gemini embeddings together.
+  * Sensitive items are never sent to the AI.
+  * It SUGGESTS answers with sources. You must accept a suggestion;
+    it is never auto-filled.
+  * Safety checks reject suggestions that are not backed by your data
+    (for example a number that appears in none of the sources).
+
+
+9. CURRENT RESULTS (as of 30 Sep 2026)
+---------------------------------------------------------------------
+  Jobs collected ............ 124
+  Eligible jobs ............. 7
+  Applications started ...... 6
+  Submitted ................. 1  (MindTickle - not confirmed)
+  Confirmed ................. 0
+  Automated tests ........... 174 of 174 passing (15 test files)
+
+  Typecheck passed and all 174 tests passed again on 1 Oct 2026, before
+  the new career work started.
+
+
+10. WHAT IS BEING BUILT NOW - "AI Career Engineering System"
+---------------------------------------------------------------------
+Goal: don't just apply to more jobs - help you BECOME qualified for
+the right ones.
+
+  Loop: DISCOVER -> UNDERSTAND -> MEASURE -> IMPROVE -> BUILD EVIDENCE
+        -> APPLY -> PREPARE -> LEARN -> REMEMBER -> EVOLVE
+
+DONE AND TESTED (1 Oct 2026) - Career Profile Foundation
+  * One source of truth about you: personal details, contact, education
+    (degree, branch, graduation year, CGPA, 10th/12th %), experience,
+    internships, projects, skills, certifications, achievements, GitHub,
+    LinkedIn, portfolio, locations, remote/hybrid/onsite, target roles,
+    target companies, salary, notice period, work authorization and
+    career goals.
+  * Every fact shows its VALUE, SOURCE (file + field, or answers-file
+    line), LAST UPDATED (file time) and VERIFIED? status:
+      Verified by you / From resume / Stated by you / Derived (rule
+      shown) / System verified / Missing (with how to add it).
+  * Shows how complete your profile is, and flags conflicts between
+    MY_DATA and Application_Answers.txt.
+  * It never changes your files. Sensitive values are masked.
+  * Where to see it: ApplyPilot > Profile > "Career profile" tab,
+    or run  npm run career:profile
+  * Tests: 9 new tests (183 of 183 passing at that point).
+
+DONE AND TESTED (1 Oct 2026) - Phase 2: Career Memory
+  * A permanent, versioned memory of your career, stored on your PC in
+    runtime/state/applypilot/career-memory/.
+  * It holds 14 kinds of records:
+      Profile, Skills, Projects, Education, Experience, Certifications,
+      Resumes, Applications, Questions, Interviews, Learning, Evidence,
+      Companies, Outcomes.
+  * Stable IDs that never change for the same thing (SKILL-xxxxxxxx,
+    APP-xxxxxxxx, RESUME-..., INTERVIEW-...).
+  * Versioning: every change becomes version 2, 3, ... and every old
+    version can still be opened. Nothing is overwritten; a deleted record
+    keeps its history and can be restored.
+  * Timestamps (created / last changed), the source of every version,
+    and evidence links between records (for example
+    skill -> internship / project; application -> resume).
+  * How it updates:
+      - Synced automatically when the app starts, on refresh, and after
+        every job search and every apply run.
+      - Synced records come from MY_DATA, your Google Sheet and
+        Companies/. Edit the source and memory records the change.
+      - Interviews, learning, outcomes and evidence are yours alone:
+        the system never invents or changes them. They are added through
+        the API for now; screens for them come with the later phases.
+  * Where to see it: ApplyPilot > "Career memory"
+    (records per kind, full history, "What changed" timeline).
+    Or run:  npm run career:memory  [stats | sync | list <kind> |
+             show <id> | timeline]
+  * Your real data today: 56 skills, 2 projects, 3 education entries,
+    4 experience entries, 4 certifications/achievements, 8 resumes,
+    6 applications, 54 screening questions, 32 companies.
+  * Included in the privacy export. Deleted only if you tick
+    "career memory" in Settings > Privacy > Delete.
+  * Tests: 20 new tests (203 of 203 passing at that point).
+
+DONE AND TESTED (1 Oct 2026) - Phase 3: JD Intelligence / JD Decompiler
+  * Turns every job description into structured, checkable facts:
+      role, company, location, work mode, experience, education,
+      seniority, mandatory / preferred / nice-to-have skills,
+      responsibilities, certifications, salary,
+      and the Indian campus rules: batch, CGPA, percentage, branch,
+      bond, notice period. Plus the industry (domain).
+  * Every value comes with:
+      - the exact words from the JD (or the job listing) and the line
+        number they are on,
+      - a confidence score (high / medium / low) from a written rule,
+      - how it was found.
+  * Reports what the JD does NOT say (for example "salary not stated")
+    and where the JD contradicts itself (for example "freshers welcome"
+    but also "minimum 5 years").
+  * Handles messy JDs: HTML pages, one long paragraph, empty or
+    placeholder text, very long lines. Nothing crashes.
+  * Connected to the pipeline: every time a job is matched, its JD
+    intelligence is saved in a new "JD Intelligence" column of the
+    Job Details tab. Mandatory skills are always exactly the ones the
+    eligibility check uses.
+  * Where to see it: ApplyPilot > Jobs > open a job > "JD intelligence".
+    Or run:  npm run jd:decompile  (adds it to jobs that don't have it).
+  * Your real data: all 125 JDs processed, every quote verified exact,
+    average confidence 82%. 3 JDs contradict themselves (Okta,
+    Notion, Toast).
+  * Fixed along the way: short requirement lines such as "Minimum 5
+    years of experience" or "Immediate joiners preferred" were being
+    read as section headings, which hid requirements from the matcher.
+  * Found, NOT changed: in 15 of the 125 JDs the eligibility check
+    cannot read the experience wording (e.g. "IT/software development
+    experience"). One of them, MindTickle JOB-000030, asks for 2+ years
+    and is marked eligible.
+  * Tests: 23 new tests, 225 of 225 passing in total.
+
+DONE AND TESTED (1 Oct 2026) - Phases 4 to 23: the Career Engineering layer
+  All new code is in agent/career/ and is shown in ApplyPilot under the
+  new "Career" section of the sidebar. Rule everywhere: measure proof,
+  never pretend; say KNOWN / INFERRED / LIKELY / UNKNOWN; never claim a
+  cause the data can't show.
+
+  Phase 4  Career DNA - an evidence score (0-100) per skill from a fixed
+           points table (job 35, internship 30, project 20, training 12,
+           certificate 12, course 8, skills list 10, verified evidence 25).
+           Each score shows its arithmetic, whether it is verified /
+           documented / only claimed, a confidence, and freshness.
+           Current DNA vs Target DNA (what your relevant jobs expect),
+           plus score history.
+  Phase 5  Evidence Graph - You -> Skill -> Evidence (job, internship,
+           project, GitHub, deployment, certificate, course, resume).
+           Each link has a strength, verification and freshness.
+  Phase 6  Readiness - for every job: APPLY NOW / PREPARE FIRST / BUILD
+           PROOF FIRST / LEARN FIRST / NETWORK FIRST / WAIT / SKIP /
+           NOT ELIGIBLE, with reasons and every component (technical
+           match, eligibility, evidence, skill gap, experience gap,
+           education incl. batch/CGPA/percentage, location, risk).
+           It can be stricter than the eligibility gate, never looser.
+           Decision history is kept.
+  Phase 7  Career X-Ray - "Analyze my career": readiness, target roles,
+           qualified / near-match / stretch jobs, skill, evidence, resume
+           and interview gaps, top companies, ranked actions, changes
+           since last time. Export as HTML or Markdown.
+  Phase 8  Market - demand by skill, role, company, city, experience and
+           technology area; daily snapshots and trends; data freshness.
+  Phase 9  Learning - ranked skills to learn or prove (with the formula),
+           prerequisites, ordered learning path, steps, official
+           resources, practice, project, progress.
+  Phase 10 Job-to-Project compiler - a full project plan for a gap or a
+           job: requirements, architecture, APIs, database, milestones,
+           acceptance criteria, tests, deployment, README, evidence
+           checklist, interview questions.
+  Phase 11 Evidence verification - GitHub ownership, technologies found
+           in the code/config, README, tests, live URL + API health +
+           hosting platform. Only skills actually found count.
+  Phase 12 30/60/90-day mission - phases, weekly goals, today's tasks,
+           milestones; ticks itself from real progress; re-plans when
+           you fall behind or your top gap changes.
+  Phase 13 Resume evolution - every version, its strategy, what changed,
+           and what happened (no causal claims).
+  Phase 14 Application intelligence - per job: go / caution / stop,
+           which resume, which projects to lead with, questions this
+           company asked before, your history there, duplicate check.
+  Phase 15 Interview prediction - topics labelled LIKELY / POSSIBLE /
+           UNKNOWN with the reason; never promised questions.
+  Phase 16 Interview memory - record questions, answers, what went
+           wrong, feedback, result; question bank, weak areas, company
+           topics, predicted-vs-actual accuracy.
+  Phase 17 Experiment lab - every application as an experiment, with
+           small-sample warnings.
+  Phase 18 Rejection forensics - KNOWN facts, LIKELY factors only with
+           direct evidence, otherwise UNKNOWN.
+  Phase 19 Career analytics - funnel, response/interview/offer rates,
+           time to response, by company/role/source, weekly trend.
+  Phase 20 Career Twin - one summary of everything (card on Overview).
+  Phase 21 Career Command Center - new pages: Career X-Ray, Career
+           mission, Career DNA, Learning, Projects, Interview center,
+           Companies, Market, Career analytics, Career memory; plus
+           "What to do about this job" in every job panel.
+  Phase 22 Daily cycle - the daily run now has a "career_intelligence"
+           step (after matching, before resumes) and the daily report has
+           a "Career intelligence" section; ApplyPilot also re-analyses
+           after every job search and apply run.
+  Phase 23 Notifications - new qualified job, new skill gap, interview
+           coming up, new opportunity at a target company, learning
+           milestone, evidence verified, mission behind. Each fires once
+           and can be switched off in Settings > Notifications.
+           (Email / Telegram / WhatsApp are not built.)
+
+  Your real data today (1 Oct 2026):
+    * 36 jobs in your target roles; 0 qualified right now, 8 near-match
+      (one project away), 5 stretch, 17 not eligible.
+    * Biggest gap: CI/CD (mandatory in 17 of 36 relevant jobs; no
+      evidence). Then C#, TypeScript.
+    * Your 2 GitHub projects have never been verified.
+    * Rubrik JOB-000022 (applied earlier) only accepts the 2027 batch
+      and CGPA 8+ - you don't meet either.
+  Tests: 72 new tests, 275 of 275 passing in total.
+
+  Not built / limits:
+    * Email, Telegram and WhatsApp notifications.
+    * Google Sheets tabs for the career data (it is stored locally in
+      runtime/state/applypilot/career-state and career-memory).
+    * Evidence checks use the public GitHub API: 60 checks/hour without
+      a GITHUB_TOKEN in .env.
+    * The eligibility gate still can't read some experience wording (15
+      of your JDs); readiness now applies it, the gate does not.
+
+Possible next steps (you choose):
+  - Make the eligibility gate read the experience wording the JD
+    decompiler already reads.
+  - Google Sheets tabs for Skills, Evidence, Projects, Learning Plan,
+    Interviews and Experiments.
+  - Email / Telegram notifications.
+  - Polish and onboarding.
+
+
+11. USEFUL COMMANDS
+---------------------------------------------------------------------
+  npm run app            start ApplyPilot (web app)
+  npm run app:demo       demo mode with a mock job site
+  npm run discover       find new jobs
+  npm run match          score and check eligibility
+  npm run generate-resumes  build tailored resumes
+  npm run dry-run        full daily run without submitting
+  npm run apply:all      LIVE queue - you confirm each submission
+  npm run status         quick status
+  npm run report         daily report
+  npm run test           run all tests
+  npm run typecheck      type checks
+  npm run mcp            start the MCP server
+  npm run career:profile your career profile with sources
+  npm run career:memory  career memory (stats, sync, list, show, timeline)
+  npm run jd:decompile   add JD intelligence to stored jobs
+
+More detail: README.md (full reference) and ARCHITECTURE.md (design).
+
+----------------------------------------------------------------------------
+JOBS PAGE UPGRADE (1 Oct 2026)
+----------------------------------------------------------------------------
+- Jobs are cards (4-6 per row); clicking one opens the job's own page
+  (#/jobs/JOB-000123) with Previous / Next through the list you came from.
+- "All jobs" is a tick-box filter: New today, Eligible, Ready to apply,
+  Needs you, Queued, Applied, Failed, Not eligible, Not matched yet, Saved
+  (a job shows if it is in ANY ticked group). Active filters show as chips.
+- Your filters, search, sort, page and view are remembered in this browser.
+- Views: Cards / By company (one collapsible row per company) / Board.
+- "Hide duplicates" (on by default) shows each opening once - same company
+  and same role name - with "N postings" on the card.
+- Each card shows the readiness decision and up to 3 missing mandatory
+  skills; hover for Save / Skip / Open posting.
+- Board: Ready to apply -> Needs you -> Applied -> Interview -> Offer ->
+  Rejected/closed. Dragging a card to Interview / Offer / Rejected (or the
+  "Record outcome" menu) records YOUR outcome in career memory, dated
+  today. The agent never moves cards into those columns itself.
+- Already-submitted jobs (APPLIED or SUBMISSION_UNVERIFIED) show
+  "Already applied" and cannot be applied to again from the UI (the
+  runtime also refuses them as DUPLICATE).
+- Overview has a "Since yesterday" line; each item opens the matching list.
+- API: /api/jobs?groups=a,b&dedupe=1, /api/jobs/summary, /api/jobs/board.
+- Tests: 8 new (283 of 283 passing).

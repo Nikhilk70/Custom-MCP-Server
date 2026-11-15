@@ -1,0 +1,18 @@
+{
+  "companyId": "coinbase",
+  "companyName": "Coinbase",
+  "enabled": true,
+  "priority": "P3",
+  "careersUrl": "https://job-boards.greenhouse.io/coinbase",
+  "domains": [
+    "coinbase.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "coinbase"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 7 engineering openings in India at that time."
+}

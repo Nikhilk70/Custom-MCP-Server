@@ -1,0 +1,18 @@
+{
+  "companyId": "zscaler",
+  "companyName": "Zscaler",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://job-boards.greenhouse.io/zscaler",
+  "domains": [
+    "zscaler.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "zscaler"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 42 engineering openings in India at that time."
+}

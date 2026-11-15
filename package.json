@@ -1,0 +1,50 @@
+{
+  "name": "auto-job-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Add jobs to a Google Sheet; ApplyPilot reads each JD, tailors your LaTeX resume to it and applies in a real browser (you handle CAPTCHAs).",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit",
+    "start": "npm run web:build && tsx server/main.ts",
+    "web:dev": "vite --config web/vite.config.ts",
+    "web:build": "vite build --config web/vite.config.ts",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "template:approve": "tsx agent/cli.ts template:approve",
+    "sheets:auth": "tsx agent/cli.ts sheets:auth",
+    "browser:login": "tsx agent/cli.ts browser:login",
+    "app": "tsx server/main.ts",
+    "validate": "npm run typecheck && npm run lint && npm run test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/client": "^2.2.0",
+    "@modelcontextprotocol/server": "^2.2.0",
+    "dotenv": "^18.0.4",
+    "googleapis": "^182.0.0",
+    "lucide-react": "^1.49.0",
+    "pdfjs-dist": "^6.3.289",
+    "playwright": "^1.63.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^10.11.0",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0",
+    "typescript-eslint": "^8.71.0",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2"
+  }
+}

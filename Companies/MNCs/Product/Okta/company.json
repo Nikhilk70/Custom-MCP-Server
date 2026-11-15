@@ -1,0 +1,18 @@
+{
+  "companyId": "okta",
+  "companyName": "Okta",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://job-boards.greenhouse.io/okta",
+  "domains": [
+    "okta.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "okta"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 80 engineering openings in India at that time."
+}

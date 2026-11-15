@@ -1,0 +1,11 @@
+{
+  "_note": "External MCP servers ApplyPilot calls as a client. Script paths are relative to this project's folder.",
+  "servers": {
+    "linkedin": {
+      "command": "node",
+      "args": [
+        "../linkedin-mcp/build/index.js"
+      ]
+    }
+  }
+}

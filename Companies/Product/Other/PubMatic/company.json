@@ -1,0 +1,18 @@
+{
+  "companyId": "pubmatic",
+  "companyName": "PubMatic",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://job-boards.greenhouse.io/pubmatic",
+  "domains": [
+    "pubmatic.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "pubmatic"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 29 engineering openings in India at that time."
+}

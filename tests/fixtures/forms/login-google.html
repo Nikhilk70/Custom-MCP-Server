@@ -1,0 +1,14 @@
+<!doctype html><html><head><title>Sign in - Acme Payments Careers</title><link rel="stylesheet" href="common.css"></head><body>
+<!-- A career-site login wall offering "Continue with Google". The ?next= query picks which Google fixture follows. -->
+<h1>Sign in to apply</h1><p>Acme Payments careers</p>
+<form>
+  <label for="u">Email</label><input id="u" name="username" type="email">
+  <label for="p">Password</label><input id="p" name="password" type="password">
+  <button type="button">Sign in</button>
+</form>
+<a id="g" href="google-chooser.html">Continue with Google</a>
+<script>
+  const next = new URLSearchParams(location.search).get("next");
+  if (next) document.getElementById("g").href = next;
+</script>
+</body></html>

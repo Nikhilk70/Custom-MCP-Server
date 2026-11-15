@@ -1,0 +1,43 @@
+# Secrets â€” never commit
+.env
+.env.*
+!.env.example
+config/google-credentials.json
+config/google-token.json
+runtime/
+*.pem
+*.key
+
+# Personal / generated data
+Data_Resume/MY_DATA/**/*.json
+!Data_Resume/MY_DATA/**/*.schema.json
+Data_Resume/Generated/
+Data_Resume/Resume_Template/.baseline/
+Data_Resume/Source/
+Jobs/Raw/*
+Jobs/Processed/*
+Jobs/Matched/*
+Jobs/Applied/*
+Applications/Logs/*
+Applications/Screenshots/*
+Applications/Errors/*
+Applications/Reports/*
+!**/.gitkeep
+Application_Questions/**/*.json
+
+# Build
+node_modules/
+dist/
+web/dist/
+coverage/
+test-results/
+*.log
+
+# Personal application answers (CTC, notice period, …)
+Application_Answers.txt
+
+# Copies of your tailored resumes (personal data)
+Resumes/
+
+# Old status report of the previous system (contains personal data)
+BUILD_STATUS.md

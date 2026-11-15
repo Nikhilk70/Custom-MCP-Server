@@ -1,0 +1,18 @@
+{
+  "companyId": "paytm",
+  "companyName": "Paytm",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://jobs.lever.co/paytm",
+  "domains": [
+    "paytm.com"
+  ],
+  "ats": {
+    "type": "lever",
+    "boardToken": "paytm"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public lever API on 2026-09-30: 3 engineering openings in India at that time."
+}

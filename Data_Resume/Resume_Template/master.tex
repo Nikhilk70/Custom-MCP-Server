@@ -1,0 +1,307 @@
+%-------------------------------------------
+% Resume in Latex
+% Full Stack Developer Resume
+% ATS Friendly - Clean & Consistent Layout
+%-------------------------------------------
+%% AUTO-JOB-AGENT MASTER TEMPLATE
+%% template-version: 2.0.0 (user-supplied layout, 2026-09-30)
+%%
+%% STRUCTURE ONLY. The preamble below is the user's template verbatim. The body of the uploaded
+%% template contained another person's resume; all of it was removed. Every AUTO block is rendered
+%% from Data_Resume/MY_DATA using this template's own macros. Text outside AUTO markers is copied
+%% unchanged into every generated resume. Changes to this file require `npm run template:approve`.
+
+\documentclass[letterpaper,11pt]{article}
+
+%-------------------------------------------
+% Packages
+%-------------------------------------------
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+
+\input{glyphtounicode}
+
+%-------------------------------------------
+% Page Style
+%-------------------------------------------
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%-------------------------------------------
+% Page Margins
+%-------------------------------------------
+
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+%-------------------------------------------
+% General Formatting
+%-------------------------------------------
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+
+\setlength{\tabcolsep}{0in}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\renewcommand{\baselinestretch}{1.0}
+
+%-------------------------------------------
+% Section Formatting
+%-------------------------------------------
+
+\titleformat{\section}
+{
+    \scshape
+    \raggedright
+    \large
+    \bfseries
+}
+{}
+{0em}
+{}
+[
+    \titlerule
+]
+
+\titlespacing*{\section}
+{0pt}
+{6pt}
+{3pt}
+
+%-------------------------------------------
+% ATS Readable PDF
+%-------------------------------------------
+
+\pdfgentounicode=1
+
+%-------------------------------------------
+% Resume Item
+%-------------------------------------------
+
+\newcommand{\resumeItem}[1]{
+    \item\small{#1}
+}
+
+%-------------------------------------------
+% Resume Subheading
+% Experience / Education
+%-------------------------------------------
+
+\newcommand{\resumeSubheading}[4]{
+    \item
+    \begin{tabular*}{\textwidth}
+    {l@{\extracolsep{\fill}}r}
+
+        \textbf{#1}
+        &
+        \textbf{\small #2}
+        \\[-1pt]
+
+        \textit{\small #3}
+        &
+        \textit{\small #4}
+
+    \end{tabular*}
+
+    \vspace{-1pt}
+}
+
+%-------------------------------------------
+% Resume Project Heading
+%-------------------------------------------
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}
+    {l@{\extracolsep{\fill}}r}
+
+        \small #1
+        &
+        \textbf{\small #2}
+
+    \end{tabular*}
+
+    \vspace{1pt}
+}
+
+%-------------------------------------------
+% Main Resume List
+%-------------------------------------------
+
+\newcommand{\resumeSubHeadingListStart}{
+    \begin{itemize}[
+        leftmargin=0in,
+        label={},
+        itemsep=1pt,
+        parsep=0pt,
+        topsep=1pt,
+        partopsep=0pt
+    ]
+}
+
+\newcommand{\resumeSubHeadingListEnd}{
+    \end{itemize}
+}
+
+%-------------------------------------------
+% Experience Bullet List
+%-------------------------------------------
+
+\newcommand{\resumeItemListStart}{
+    \begin{itemize}[
+        leftmargin=0.22in,
+        label=\textbullet,
+        itemsep=1pt,
+        parsep=0pt,
+        topsep=1pt,
+        partopsep=0pt
+    ]
+}
+
+\newcommand{\resumeItemListEnd}{
+    \end{itemize}
+}
+
+%-------------------------------------------
+% Project Bullet List
+%-------------------------------------------
+
+\newcommand{\resumeProjectItemListStart}{
+    \begin{itemize}[
+        leftmargin=0.22in,
+        label=\textbullet,
+        itemsep=1pt,
+        parsep=0pt,
+        topsep=1pt,
+        partopsep=0pt
+    ]
+}
+
+\newcommand{\resumeProjectItemListEnd}{
+    \end{itemize}
+
+    \vspace{4pt}
+}
+
+%-------------------------------------------
+% Project Technology Line
+%-------------------------------------------
+
+\newcommand{\resumeProjectTech}[1]{
+    \small
+    \textit{#1}
+
+    \vspace{1pt}
+}
+
+%-------------------------------------------
+% Certifications
+%-------------------------------------------
+
+\newcommand{\resumeCertHeading}[2]{
+    \noindent
+    \begin{tabular*}{\textwidth}
+    {l@{\extracolsep{\fill}}r}
+
+        \small #1
+        &
+        \small #2
+
+    \end{tabular*}
+
+    \vspace{1pt}
+}
+
+%-------------------------------------------
+% Resume Starts Here
+%-------------------------------------------
+
+\begin{document}
+
+%===========================================
+% CONTACT INFORMATION
+%===========================================
+
+% === AUTO: HEADER START ===
+% === AUTO: HEADER END ===
+
+%===========================================
+% PROFESSIONAL SUMMARY
+%===========================================
+
+\section{Professional Summary}
+
+% === AUTO: SUMMARY START ===
+% === AUTO: SUMMARY END ===
+
+%===========================================
+% TECHNICAL SKILLS
+%===========================================
+
+\section{Technical Skills}
+
+% === AUTO: SKILLS START ===
+% === AUTO: SKILLS END ===
+
+%===========================================
+% EXPERIENCE
+%===========================================
+
+\section{Experience}
+
+% === AUTO: EXPERIENCE START ===
+% === AUTO: EXPERIENCE END ===
+
+%===========================================
+% PROJECTS
+%===========================================
+
+\section{Projects}
+
+% === AUTO: PROJECTS START ===
+% === AUTO: PROJECTS END ===
+
+%===========================================
+% EDUCATION
+%===========================================
+
+\section{Education}
+
+% === AUTO: EDUCATION START ===
+% === AUTO: EDUCATION END ===
+
+%===========================================
+% CERTIFICATIONS
+%===========================================
+
+\section{Certifications}
+
+% === AUTO: CERTIFICATIONS START ===
+% === AUTO: CERTIFICATIONS END ===
+
+%===========================================
+% END DOCUMENT
+%===========================================
+
+\end{document}

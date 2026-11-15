@@ -1,0 +1,18 @@
+{
+  "companyId": "observe-ai",
+  "companyName": "Observe.AI",
+  "enabled": true,
+  "priority": "P3",
+  "careersUrl": "https://job-boards.greenhouse.io/observeai",
+  "domains": [
+    "observe.ai"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "observeai"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 3 engineering openings in India at that time."
+}

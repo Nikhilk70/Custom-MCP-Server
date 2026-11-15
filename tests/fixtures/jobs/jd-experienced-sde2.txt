@@ -1,0 +1,21 @@
+About the team
+Our payments platform processes millions of UPI and card transactions a day for merchants across India.
+
+Responsibilities
+- Design and build microservices for the payments ledger
+- Own services end to end, from design reviews to on-call
+- Mentor junior engineers
+
+Requirements
+- 3-5 years of experience building backend systems
+- Strong hands-on experience with Java, Spring Boot and Microservices
+- Experience deploying services on AWS
+- Bachelor's degree in Computer Science or equivalent
+
+Preferred
+- Experience with Kafka
+
+Nice to have
+- Kubernetes
+
+This is a hybrid role: 3 days a week in our Hyderabad office.

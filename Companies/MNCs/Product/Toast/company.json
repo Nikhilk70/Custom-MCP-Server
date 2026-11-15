@@ -1,0 +1,18 @@
+{
+  "companyId": "toast",
+  "companyName": "Toast",
+  "enabled": true,
+  "priority": "P2",
+  "careersUrl": "https://job-boards.greenhouse.io/toast",
+  "domains": [
+    "toasttab.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "toast"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 11 engineering openings in India at that time."
+}

@@ -1,0 +1,18 @@
+{
+  "companyId": "databricks",
+  "companyName": "Databricks",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://job-boards.greenhouse.io/databricks",
+  "domains": [
+    "databricks.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "databricks"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 64 engineering openings in India at that time."
+}

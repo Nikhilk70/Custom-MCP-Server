@@ -1,0 +1,19 @@
+{
+  "companyId": "freshworks",
+  "companyName": "Freshworks",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://careers.smartrecruiters.com/Freshworks",
+  "domains": [
+    "freshworks.com"
+  ],
+  "ats": {
+    "type": "smartrecruiters",
+    "boardToken": "Freshworks",
+    "country": "in"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public smartrecruiters API on 2026-09-30: 14 engineering openings in India at that time."
+}

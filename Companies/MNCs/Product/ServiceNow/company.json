@@ -1,0 +1,19 @@
+{
+  "companyId": "servicenow",
+  "companyName": "ServiceNow",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://careers.smartrecruiters.com/ServiceNow",
+  "domains": [
+    "servicenow.com"
+  ],
+  "ats": {
+    "type": "smartrecruiters",
+    "boardToken": "ServiceNow",
+    "country": "in"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public smartrecruiters API on 2026-09-30: 39 engineering openings in India at that time."
+}

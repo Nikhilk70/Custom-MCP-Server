@@ -1,0 +1,38 @@
+{
+  "mode": "REVIEW_ONLY",
+  "retryLimit": 2,
+  "maxApplicationsPerRun": 10,
+  "waitTimeouts": {
+    "navigationMs": 45000,
+    "stabilizeMs": 2500,
+    "elementMs": 10000,
+    "postSubmitMs": 15000
+  },
+  "browser": {
+    "profileDir": "runtime/browser-profile",
+    "headless": false,
+    "slowMoMs": 50
+  },
+  "humanWait": {
+    "enabled": true,
+    "timeoutMs": 900000,
+    "pollMs": 2000
+  },
+  "highConfidenceThreshold": 0.85,
+  "allowAiSuggestedAnswers": false,
+  "humanReviewRules": {
+    "stopOnUnknownRequiredField": true,
+    "stopOnUnknownOptionalField": false,
+    "stopOnLoginWall": true,
+    "stopOnMultiStepForm": true
+  },
+  "confirmationPatterns": [
+    "thank you for applying",
+    "thanks for applying",
+    "application (has been )?(submitted|received)",
+    "we('ve| have) received your application",
+    "your application (was|has been) (sent|submitted)",
+    "successfully (submitted|applied)"
+  ],
+  "maxFormSteps": 5
+}

@@ -1,0 +1,18 @@
+{
+  "companyId": "meesho",
+  "companyName": "Meesho",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://jobs.lever.co/meesho",
+  "domains": [
+    "meesho.com"
+  ],
+  "ats": {
+    "type": "lever",
+    "boardToken": "meesho"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public lever API on 2026-09-30: 6 engineering openings in India at that time."
+}

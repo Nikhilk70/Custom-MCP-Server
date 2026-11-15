@@ -1,0 +1,46 @@
+{
+  "templatePath": "Data_Resume/Resume_Template/master.tex",
+  "outputRoot": "Data_Resume/Generated",
+  "allowedSections": [
+    "SUMMARY",
+    "SKILLS",
+    "EXPERIENCE",
+    "PROJECTS"
+  ],
+  "profileRenderedSections": [
+    "HEADER",
+    "EDUCATION",
+    "CERTIFICATIONS"
+  ],
+  "expectedSectionNames": [
+    "Professional Summary",
+    "Technical Skills",
+    "Experience",
+    "Projects",
+    "Education",
+    "Certifications"
+  ],
+  "maxPages": 2,
+  "filenamePattern": "{company}_{jobTitle}_{jobId}",
+  "compiler": {
+    "provider": "auto",
+    "order": [
+      "overleaf-mcp",
+      "local"
+    ],
+    "localCommands": [
+      "latexmk",
+      "pdflatex"
+    ],
+    "timeoutMs": 120000,
+    "_note": "Template uses pdfgentounicode and glyphtounicode (pdfLaTeX). Overleaf default compiler is pdfLaTeX. tectonic/XeTeX is not supported for this template."
+  },
+  "generationRules": {
+    "maxProjects": 2,
+    "reorderSkills": true,
+    "reorderExperienceBullets": true,
+    "dropIrrelevantProjects": false,
+    "allowAiSummaryRewrite": false,
+    "includeLearningSkills": true
+  }
+}

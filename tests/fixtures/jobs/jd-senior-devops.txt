@@ -1,0 +1,7 @@
+Senior Platform Engineer
+
+Requirements
+- 7+ years of experience running production infrastructure
+- Deep expertise in Kubernetes, Terraform, AWS and Go (Golang)
+- Experience with Kafka, Redis and Elasticsearch
+- On-call participation

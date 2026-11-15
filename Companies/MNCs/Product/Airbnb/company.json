@@ -1,0 +1,18 @@
+{
+  "companyId": "airbnb",
+  "companyName": "Airbnb",
+  "enabled": true,
+  "priority": "P3",
+  "careersUrl": "https://job-boards.greenhouse.io/airbnb",
+  "domains": [
+    "airbnb.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "airbnb"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 2 engineering openings in India at that time."
+}

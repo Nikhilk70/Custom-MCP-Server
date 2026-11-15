@@ -1,0 +1,18 @@
+{
+  "companyId": "new-relic",
+  "companyName": "New Relic",
+  "enabled": true,
+  "priority": "P2",
+  "careersUrl": "https://job-boards.greenhouse.io/newrelic",
+  "domains": [
+    "newrelic.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "newrelic"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 8 engineering openings in India at that time."
+}

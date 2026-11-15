@@ -1,0 +1,18 @@
+{
+  "companyId": "notion",
+  "companyName": "Notion",
+  "enabled": true,
+  "priority": "P3",
+  "careersUrl": "https://jobs.ashbyhq.com/notion",
+  "domains": [
+    "notion.so"
+  ],
+  "ats": {
+    "type": "ashby",
+    "boardToken": "notion"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public ashby API on 2026-09-30: 3 engineering openings in India at that time."
+}

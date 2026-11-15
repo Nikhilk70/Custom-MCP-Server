@@ -1,0 +1,18 @@
+{
+  "companyId": "mongodb",
+  "companyName": "MongoDB",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://job-boards.greenhouse.io/mongodb",
+  "domains": [
+    "mongodb.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "mongodb"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 41 engineering openings in India at that time."
+}

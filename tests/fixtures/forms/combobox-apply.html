@@ -1,0 +1,56 @@
+<!doctype html><html><head><title>Java Backend Developer - Acme Payments</title><link rel="stylesheet" href="common.css">
+<style>.menu{border:1px solid #ccc}.menu [role=option]{padding:4px}</style></head><body>
+<!-- Structure of the live Greenhouse (react-select) form on mongodb.com: an input role=combobox with aria-controls,
+     options rendered only while open, the chosen value shown in a separate .select__single-value div, and a hidden
+     aria-hidden `required` input that carries validation. -->
+<h1>Java Backend Developer</h1><p>Acme Payments · Bengaluru, India</p>
+<form action="thanks.html" method="get">
+  <label for="fn">First Name *</label><input id="fn" name="first_name" required>
+  <label for="ln">Last Name *</label><input id="ln" name="last_name" required>
+  <label for="em">Email *</label><input id="em" name="email" type="email" required>
+  <label for="ph">Phone *</label><input id="ph" name="phone" required>
+  <div class="select">
+    <label id="country-label" for="country">Country</label>
+    <div class="select__control">
+      <div class="select__value-container"><div class="select__placeholder">Select...</div>
+        <input id="country" role="combobox" aria-labelledby="country-label" aria-controls="country-menu" aria-expanded="false" autocomplete="off"></div>
+    </div>
+    <div id="country-menu" role="listbox" class="menu" style="display:none"></div>
+    <input tabindex="-1" aria-hidden="true" required name="country_value" style="opacity:0;height:1px;width:1px;position:absolute" value="">
+  </div>
+  <div class="file-upload"><div class="label">Resume/CV*</div>
+    <label for="resume" class="btn">Attach</label><input id="resume" type="file" accept=".pdf" style="display:none" required>
+    <button type="button">Dropbox</button><button type="button">Enter manually</button></div>
+  <button type="submit">Submit Application</button>
+</form>
+<script>
+  const all = ["Indonesia", "India", "British Indian Ocean Territory", "Ireland"];
+  const input = document.getElementById("country");
+  const menu = document.getElementById("country-menu");
+  const hidden = document.querySelector("input[name=country_value]");
+  const render = () => {
+    const q = input.value.toLowerCase();
+    menu.innerHTML = "";
+    for (const c of all.filter((x) => x.toLowerCase().includes(q))) {
+      const o = document.createElement("div");
+      o.setAttribute("role", "option");
+      o.textContent = c;
+      o.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        const ph = document.querySelector(".select__placeholder, .select__single-value");
+        ph.className = "select__single-value";
+        ph.textContent = c;
+        hidden.value = c;
+        input.value = "";
+        menu.style.display = "none";
+      });
+      menu.appendChild(o);
+    }
+    menu.style.display = "block";
+  };
+  input.addEventListener("focus", render);
+  input.addEventListener("input", render);
+  input.addEventListener("keydown", (e) => { if (e.key === "ArrowDown") render(); });
+  input.addEventListener("blur", () => { input.value = ""; menu.style.display = "none"; });
+</script>
+</body></html>

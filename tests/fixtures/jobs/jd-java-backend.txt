@@ -1,0 +1,18 @@
+About the role
+Acme Payments is hiring a Java Backend Developer in Bengaluru to build payment APIs.
+
+What you'll do
+- Build and maintain REST APIs using Java and Spring Boot
+- Work with PostgreSQL and MySQL databases
+- Collaborate in an Agile team using Git
+
+Requirements
+- 0-2 years of experience in backend development
+- Strong knowledge of Java, Spring Boot, Hibernate and SQL
+- Experience with REST APIs
+- Bachelor's degree in Computer Science or related field
+
+Nice to have
+- Docker
+- Kubernetes
+- Experience with Kafka

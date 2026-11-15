@@ -1,0 +1,19 @@
+{
+  "companyId": "bosch",
+  "companyName": "Bosch",
+  "enabled": true,
+  "priority": "P2",
+  "careersUrl": "https://careers.smartrecruiters.com/BoschGroup",
+  "domains": [
+    "bosch.com"
+  ],
+  "ats": {
+    "type": "smartrecruiters",
+    "boardToken": "BoschGroup",
+    "country": "in"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public smartrecruiters API on 2026-09-30: 51 engineering openings in India at that time."
+}

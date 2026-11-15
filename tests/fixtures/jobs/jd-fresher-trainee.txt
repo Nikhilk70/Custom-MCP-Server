@@ -1,0 +1,12 @@
+We are hiring freshers for our Trainee Software Developer programme in Pune.
+
+What you'll do
+- Build REST APIs with Spring Boot under the guidance of senior engineers
+- Write unit tests with JUnit
+
+Requirements
+- 0-1 years of experience (freshers welcome)
+- Knowledge of Java and MySQL
+- Any graduate (B.E/B.Tech/BCA/MCA) can apply
+
+Training stipend of ₹15,000 per month during the 3-month training, followed by a CTC of 3.6 LPA.

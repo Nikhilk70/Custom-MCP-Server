@@ -1,0 +1,18 @@
+<!doctype html><html><head><title>Java Backend Developer - Acme Payments</title><link rel="stylesheet" href="common.css"></head><body>
+<!-- A visible CAPTCHA challenge in front of the form. The page script plays the user: after ?solveAfter=ms it
+     removes the challenge (as a solved CAPTCHA does) and the form underneath is usable. No ?solveAfter = never solved. -->
+<h1>Java Backend Developer</h1><p>Acme Payments · Bengaluru, India</p>
+<div id="challenge" class="g-recaptcha" data-sitekey="test" style="width:300px;height:80px;border:1px solid #999">I'm not a robot</div>
+<form action="thanks.html" method="get">
+  <label for="fn">First Name *</label><input id="fn" name="first_name" required>
+  <label for="ln">Last Name *</label><input id="ln" name="last_name" required>
+  <label for="em">Email *</label><input id="em" name="email" type="email" required>
+  <label for="ph">Phone *</label><input id="ph" name="phone" required>
+  <label for="cv">Resume/CV *</label><input id="cv" name="resume" type="file" accept=".pdf" required>
+  <button type="submit">Submit Application</button>
+</form>
+<script>
+  const ms = Number(new URLSearchParams(location.search).get("solveAfter"));
+  if (ms) setTimeout(() => document.getElementById("challenge").remove(), ms);
+</script>
+</body></html>

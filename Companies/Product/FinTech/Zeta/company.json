@@ -1,0 +1,18 @@
+{
+  "companyId": "zeta",
+  "companyName": "Zeta",
+  "enabled": true,
+  "priority": "P1",
+  "careersUrl": "https://jobs.lever.co/zeta",
+  "domains": [
+    "zeta.tech"
+  ],
+  "ats": {
+    "type": "lever",
+    "boardToken": "zeta"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public lever API on 2026-09-30: 7 engineering openings in India at that time."
+}

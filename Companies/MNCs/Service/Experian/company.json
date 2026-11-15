@@ -1,0 +1,19 @@
+{
+  "companyId": "experian",
+  "companyName": "Experian",
+  "enabled": true,
+  "priority": "P2",
+  "careersUrl": "https://careers.smartrecruiters.com/Experian",
+  "domains": [
+    "experian.com"
+  ],
+  "ats": {
+    "type": "smartrecruiters",
+    "boardToken": "Experian",
+    "country": "in"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public smartrecruiters API on 2026-09-30: 11 engineering openings in India at that time."
+}

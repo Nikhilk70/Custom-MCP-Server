@@ -1,0 +1,29 @@
+{
+  "minimumMatchScore": 60,
+  "weights": {
+    "requiredSkills": 35,
+    "preferredSkills": 10,
+    "titleSimilarity": 20,
+    "experience": 15,
+    "location": 10,
+    "workMode": 5,
+    "education": 5
+  },
+  "proficiencyCredit": {
+    "verified": 1.0,
+    "basic": 0.5,
+    "learning": 0.2,
+    "unknown": 0,
+    "missing": 0
+  },
+  "neutralScoreWhenUnknown": 0.5,
+  "hardConstraints": {
+    "rejectIfJdMissing": true,
+    "maxRequiredYearsExperience": 2,
+    "rejectExcludedTitleKeywords": true,
+    "rejectExcludedCompanies": true,
+    "rejectExcludedTechnologies": true,
+    "requireLocationMatch": true,
+    "minimumRequiredSkillCoverage": 0.3
+  }
+}

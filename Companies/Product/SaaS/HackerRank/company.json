@@ -1,0 +1,18 @@
+{
+  "companyId": "hackerrank",
+  "companyName": "HackerRank",
+  "enabled": true,
+  "priority": "P2",
+  "careersUrl": "https://job-boards.greenhouse.io/hackerrank",
+  "domains": [
+    "hackerrank.com"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "hackerrank"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 11 engineering openings in India at that time."
+}

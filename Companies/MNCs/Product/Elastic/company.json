@@ -1,0 +1,18 @@
+{
+  "companyId": "elastic",
+  "companyName": "Elastic",
+  "enabled": true,
+  "priority": "P3",
+  "careersUrl": "https://job-boards.greenhouse.io/elastic",
+  "domains": [
+    "elastic.co"
+  ],
+  "ats": {
+    "type": "greenhouse",
+    "boardToken": "elastic"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public greenhouse API on 2026-09-30: 2 engineering openings in India at that time."
+}

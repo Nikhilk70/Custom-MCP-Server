@@ -1,0 +1,18 @@
+{
+  "companyId": "atlan",
+  "companyName": "Atlan",
+  "enabled": true,
+  "priority": "P2",
+  "careersUrl": "https://jobs.ashbyhq.com/atlan",
+  "domains": [
+    "atlan.com"
+  ],
+  "ats": {
+    "type": "ashby",
+    "boardToken": "atlan"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public ashby API on 2026-09-30: 3 engineering openings in India at that time."
+}

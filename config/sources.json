@@ -1,0 +1,59 @@
+{
+  "linkedin": {
+    "enabled": true,
+    "mcpServer": "linkedin",
+    "locations": [
+      "India"
+    ],
+    "experienceLevels": [
+      "entry level",
+      "associate"
+    ],
+    "dateSincePosted": "past week",
+    "resultsPerSearch": 25,
+    "maxSearches": 20
+  },
+  "companyCareers": {
+    "enabled": false,
+    "concurrency": 3,
+    "requestTimeoutMs": 20000,
+    "maxJobsPerCompany": 500,
+    "supportedAts": [
+      "greenhouse",
+      "lever",
+      "ashby",
+      "smartrecruiters"
+    ],
+    "useFirecrawlForUnknownCareerPages": false
+  },
+  "filters": {
+    "titleIncludeKeywords": [
+      "developer",
+      "engineer",
+      "full stack",
+      "fullstack",
+      "frontend",
+      "front end",
+      "front-end",
+      "backend",
+      "back end",
+      "back-end",
+      "software",
+      "sde",
+      "programmer",
+      "react",
+      "node",
+      "mern",
+      "web"
+    ],
+    "maxJobAgeDays": 30
+  },
+  "firecrawl": {
+    "enabled": true,
+    "transport": "rest",
+    "baseUrl": "https://api.firecrawl.dev/v1",
+    "timeoutMs": 60000,
+    "maxScrapesPerRun": 40,
+    "useForJdFetch": true
+  }
+}

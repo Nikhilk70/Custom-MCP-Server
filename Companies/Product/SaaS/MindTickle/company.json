@@ -1,0 +1,18 @@
+{
+  "companyId": "mindtickle",
+  "companyName": "MindTickle",
+  "enabled": true,
+  "priority": "P2",
+  "careersUrl": "https://jobs.lever.co/mindtickle",
+  "domains": [
+    "mindtickle.com"
+  ],
+  "ats": {
+    "type": "lever",
+    "boardToken": "mindtickle"
+  },
+  "locations": [
+    "India"
+  ],
+  "notes": "Board verified live via the public lever API on 2026-09-30: 7 engineering openings in India at that time."
+}
